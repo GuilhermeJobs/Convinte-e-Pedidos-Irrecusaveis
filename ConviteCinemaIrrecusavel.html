@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você aceita sair comigo?</title>
+    <style>
+        :root {
+            --corFundo: #e0ecec;
+        }
+        body {
+            background-color: var(--corFundo);
+            text-align: center;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;                 /* Usa Flexbox para alinhar os botões */
+            justify-content: center;       /* Centraliza os botões horizontalmente */
+            gap: 20px;                     /* Adiciona um espaço entre os botões */
+            margin-top: 20px;              /* Adiciona uma margem acima dos botões */
+        }
+
+        #nao, #sim {
+            font-size: 24px;               /* Define o tamanho da fonte para 24 pixels */
+            color: #333;                   /* Define a cor do texto para #333 (cinza escuro) */
+            background-color: transparent; /* Define a cor de fundo como transparente */
+            border: 2px solid #333;        /* Adiciona uma borda sólida de 2 pixels com a cor #333 */
+            cursor: pointer;               /* Altera o cursor para um ponteiro ao passar sobre o botão */
+            padding: 10px 20px;            /* Adiciona preenchimento interno de 10px verticalmente e 20px horizontalmente */
+            border-radius: 5px;            /* Adiciona bordas arredondadas com raio de 5 pixels */
+            position: relative;            /* Permite que a posição do botão "Não" seja alterada */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Convite para ir ao cinema</h1>
+        <p>Olá pessoa, tudo joia?</p>
+        <p>No dia o dia 4 de junho o filme “Harry Potter e o Prisioneiro de Azkaban” completa 20 anos de estreia. Para comemorar, cinemas de todo o país estão organizando uma nova exibição do longa.</p>
+        <p>Você aceita ir assistir comigo?</p>
+        <div class="buttons">
+          <button id="sim" onclick="mostrarResposta()">Sim</button>
+          <button id="nao" onmouseover="mudarPosicao()">Não</button>
+        </div>
+        <p id="resposta" style="display: none;"></p>
+    </div>
+
+    <script>
+        function mostrarResposta() {
+            document.getElementById('resposta').style.display = 'block';
+            document.getElementById('resposta').innerHTML = 'Sim! Eu aceito, vai ser ótimo!';
+        }
+
+        function mudarPosicao() {
+            const buttonNao = document.getElementById('nao');
+            const randomX = Math.floor(Math.random() * (window.innerWidth - buttonNao.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - buttonNao.offsetHeight));
+            buttonNao.style.position = 'absolute';
+            buttonNao.style.left = `${randomX}px`;
+            buttonNao.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
